@@ -7,8 +7,8 @@
  회원가입(Regisrer), 로그인 기능(login), 기업 선택(select), per 조회(search), per 해석 조회(analysis), 기업 정보 표시(impormation), 기업 비교(comparison) , 데이터 초기화(reset) , 추가 지표 조회 (plus)
 
 3.Use case list
- 회원가입 기능 (Register) => 사용자가 ID와 비밀번호를 입력하여 계정을 생성한다. |
- 로그인 기능(Login) => 등록된 사용자인지 확인한 뒤 시스템 이용을 허용한다. |
+ 회원가입 기능 (Register) => 사용자가 ID와 비밀번호를 입력하여 계정을 생성한다.
+ 로그인 기능(Login) => 등록된 사용자인지 확인한 뒤 시스템 이용을 허용한다. 
  기업 선택(select) => 사용자가 기업 목록에서 하나를 선택한다.
  per 조회(search) => 선택한 기업의 per 값을 확인한다.
  per 해석 조회(analysis) => per 값에 관한 직관적인(고평가,적절,저평가 등) 평가를 제공한다.
