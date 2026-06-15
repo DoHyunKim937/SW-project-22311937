@@ -1,0 +1,52 @@
+[
+  {
+    "companyId": "samsung",
+    "companyName": "삼성전자",
+    "industry": "반도체 / 전자",
+    "description": "국내 대표 전자 및 반도체 기업이다.",
+    "per": 15.2,
+    "roe": 12.5,
+    "pbr": 1.3,
+    "psr": 2.1
+  },
+  {
+    "companyId": "skhynix",
+    "companyName": "SK하이닉스",
+    "industry": "반도체",
+    "description": "메모리 반도체를 중심으로 사업을 운영하는 기업이다.",
+    "per": 18.7,
+    "roe": 10.8,
+    "pbr": 1.6,
+    "psr": 2.5
+  },
+  {
+    "companyId": "hyundai",
+    "companyName": "현대자동차",
+    "industry": "자동차",
+    "description": "자동차 제조와 모빌리티 사업을 중심으로 하는 기업이다.",
+    "per": 7.8,
+    "roe": 13.4,
+    "pbr": 0.8,
+    "psr": 0.6
+  },
+  {
+    "companyId": "naver",
+    "companyName": "NAVER",
+    "industry": "인터넷 / 플랫폼",
+    "description": "검색, 커머스, 콘텐츠, 클라우드 사업을 운영하는 플랫폼 기업이다.",
+    "per": 28.5,
+    "roe": 8.9,
+    "pbr": 1.5,
+    "psr": 3.2
+  },
+  {
+    "companyId": "kakao",
+    "companyName": "카카오",
+    "industry": "인터넷 / 플랫폼",
+    "description": "메신저, 콘텐츠, 모빌리티, 금융 서비스를 운영하는 플랫폼 기업이다.",
+    "per": 34.1,
+    "roe": 5.2,
+    "pbr": 1.2,
+    "psr": 2.8
+  }
+]
