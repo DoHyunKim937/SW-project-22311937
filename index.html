@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Stock Indicator Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- ===================== 로그인 / 회원가입 화면 ===================== -->
+  <div id="auth-view" class="auth-view">
+    <div class="auth-shell">
+      <div class="auth-brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 17L9 11L13 15L21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 7H21V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h1>Simple Stock Indicator Viewer</h1>
+        <p>초보 투자자를 위한 재무 지표 조회 서비스</p>
+      </div>
+
+      <div class="auth-card">
+        <div class="segmented">
+          <button id="show-login-btn" class="segmented-btn active" type="button">로그인</button>
+          <button id="show-register-btn" class="segmented-btn" type="button">회원가입</button>
+        </div>
+
+        <!-- 로그인 패널 -->
+        <div id="login-panel" class="auth-panel">
+          <div class="field">
+            <label for="login-id">아이디</label>
+            <input id="login-id" type="text" autocomplete="username" placeholder="아이디를 입력하세요" />
+          </div>
+          <div class="field">
+            <label for="login-password">비밀번호</label>
+            <input id="login-password" type="password" autocomplete="current-password" placeholder="비밀번호를 입력하세요" />
+          </div>
+          <button id="login-btn" class="btn btn-primary btn-block" type="button">로그인</button>
+        </div>
+
+        <!-- 회원가입 패널 -->
+        <div id="register-panel" class="auth-panel hidden">
+          <div class="field">
+            <label for="register-id">아이디</label>
+            <input id="register-id" type="text" autocomplete="username" placeholder="사용할 아이디" />
+          </div>
+          <div class="field">
+            <label for="register-password">비밀번호</label>
+            <input id="register-password" type="password" autocomplete="new-password" placeholder="비밀번호" />
+          </div>
+          <div class="field">
+            <label for="register-email">이메일</label>
+            <input id="register-email" type="email" autocomplete="email" placeholder="이메일 주소" />
+          </div>
+          <button id="register-btn" class="btn btn-primary btn-block" type="button">가입하기</button>
+        </div>
+
+        <p id="auth-message" class="message" role="status" aria-live="polite"></p>
+      </div>
+
+      <p class="auth-foot">회원가입을 완료한 사용자만 서비스를 이용할 수 있습니다.</p>
+    </div>
+  </div>
+
+  <!-- ===================== 메인 애플리케이션 화면 ===================== -->
+  <div id="app-view" class="app-view hidden">
+    <header class="app-header">
+      <div class="app-header-inner">
+        <div class="app-brand">
+          <div class="brand-mark sm" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 17L9 11L13 15L21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 7H21V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="app-title">Simple Stock Indicator Viewer</span>
+        </div>
+        <div class="app-user">
+          <span id="welcome-text" class="welcome-text"></span>
+          <button id="logout-btn" class="btn btn-ghost btn-sm" type="button">로그아웃</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- 기업 선택 + 기능 -->
+      <section class="panel">
+        <div class="panel-head">
+          <h2>기업 선택</h2>
+          <p class="panel-sub">조회할 기업과 비교할 기업을 선택하세요.</p>
+        </div>
+
+        <div class="select-grid">
+          <div class="field">
+            <label for="company-select">조회 기업</label>
+            <select id="company-select">
+              <option value="">기업을 선택하세요</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="compare-select">비교 기업 <span class="opt">(선택)</span></label>
+            <select id="compare-select">
+              <option value="">비교 기업을 선택하세요</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button id="info-btn" class="btn btn-soft" type="button">기업 정보</button>
+          <button id="per-btn" class="btn btn-soft" type="button">PER 조회</button>
+          <button id="analysis-btn" class="btn btn-soft" type="button">PER 해석</button>
+          <button id="additional-btn" class="btn btn-soft" type="button">추가 지표</button>
+          <button id="compare-btn" class="btn btn-soft" type="button">기업 비교</button>
+          <button id="reset-btn" class="btn btn-danger-ghost" type="button">초기화</button>
+        </div>
+
+        <p id="app-message" class="message inline" role="status" aria-live="polite"></p>
+      </section>
+
+      <!-- 결과 영역 -->
+      <section class="result-grid">
+        <article class="panel result-panel">
+          <h3>기업 정보</h3>
+          <div id="company-info" class="result-body">
+            <p class="placeholder">기업을 선택한 뒤 ‘기업 정보’ 버튼을 누르세요.</p>
+          </div>
+        </article>
+
+        <article class="panel result-panel">
+          <h3>PER 조회</h3>
+          <div id="per-result" class="result-body">
+            <p class="placeholder">PER 조회 결과가 표시됩니다.</p>
+          </div>
+        </article>
+
+        <article class="panel result-panel">
+          <h3>PER 해석</h3>
+          <div id="analysis-result" class="result-body">
+            <p class="placeholder">PER 해석 결과가 표시됩니다.</p>
+          </div>
+        </article>
+
+        <article class="panel result-panel">
+          <h3>추가 지표</h3>
+          <div id="additional-result" class="result-body">
+            <p class="placeholder">ROE · PBR · PSR 결과가 표시됩니다.</p>
+          </div>
+        </article>
+
+        <article class="panel result-panel result-wide">
+          <h3>기업 비교</h3>
+          <div id="comparison-result" class="result-body">
+            <p class="placeholder">두 기업을 선택하면 비교 결과가 표시됩니다.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>본 서비스의 재무 지표 해석은 학습용 단순 기준이며 실제 투자 판단 기준이 아닙니다.</p>
+    </footer>
+  </div>
+</body>
+</html>
